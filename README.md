@@ -22,3 +22,71 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+
+### Association
+- has_many :posts
+- has_many :likes
+
+
+
+## postsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|tag_id|integer||
+
+### Association
+- belongs_to :user
+- has_many :posts_tags
+- has_many :tags, through: :posts_tags
+- has_many :likes
+
+
+
+## tagsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+
+### Association
+- has_many :posts, through: :posts_tags
+- has_many :posts_tags
+
+
+
+## likesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|post_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :post
+
+
+
+## posts_tagsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|post_id|integer|null: false, foreign_key: true|
+|tag_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :post
+- belongs_to :tag
