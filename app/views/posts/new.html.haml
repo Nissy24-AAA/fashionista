@@ -1,0 +1,17 @@
+.header
+  .header__box
+    = link_to "Fashionista", root_path, class: "header__box__name"
+    .header__box__info
+      %p.header__box__info__name
+        = current_user.nickname
+      %a{type: "button", class: "header__box__info__mypage", link_to: "#"}
+        マイページ
+      = link_to "編集", edit_user_path(current_user), class: "header__box__info__edit"
+.content__new
+  .content__new__box
+    = form_for @post do |f|
+      .content__new__box__form
+        投稿する
+      = f.text_field :image, class: "content__new__box__image", placeholder: "image url"  
+      = f.text_area :name, class: "content__new__box__tag", placeholder: "タグを入力してください。(例)ジャケット、パンツ", rows: "5"
+      = f.submit 'Send', class: 'content__new__box__btn'

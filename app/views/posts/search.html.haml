@@ -1,0 +1,29 @@
+.header
+  .header__box
+    .header__box__name
+      Fashionista
+    .header__box__info
+      %p.header__box__info__name
+        taka
+      %a{type: "button", class: "header__box__info__post", link_to: "#"}
+        投稿
+      %a{type: "button", class: "header__box__info__ranking", link_to: "#"}
+        ランキング
+      %a{type: "button", class: "header__box__info__mypage", link_to: "#"}
+        マイページ
+      %a{type: "button", class: "header__box__info__edit", link_to: "#"}
+        編集
+.content
+  .content__search
+    = form_with(url: search_posts_path, local: true, method: :get, class: "content__search__box") do |form|
+      = form.text_field :name, placeholder: "投稿を検索する", class: "content__search__box__form"
+      = form.submit "検索", class: "content__search__box__btn"
+  .content__main
+    .content__main__post
+      .content__main__post__image
+        
+      .content__main__post__like
+        .content__main__post__like__count
+          いいね数100
+        %a{type: "button", class: "content__main__post__like__btn", link_to: "#"}
+          ❤️

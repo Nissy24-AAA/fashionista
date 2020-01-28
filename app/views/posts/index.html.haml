@@ -1,0 +1,26 @@
+.header
+  .header__box
+    = link_to "Fashionista", root_path, class: "header__box__name"
+    .header__box__info
+      %p.header__box__info__name
+        = current_user.nickname
+      = link_to "投稿", "/posts/new", class: "header__box__info__post"
+      %a{type: "button", class: "header__box__info__ranking", link_to: "#"}
+        ランキング
+      %a{type: "button", class: "header__box__info__mypage", link_to: "#"}
+        マイページ
+      = link_to "編集", edit_user_path(current_user), class: "header__box__info__edit"
+.content
+  .content__search
+    = form_with(url: posts_searches_path, method: :get, class: "content__search__box") do |form|
+      = form.text_field :name, placeholder: "投稿を検索する", class: "content__search__box__form"
+      = form.submit "検索", class: "content__search__box__btn"
+  .content__main
+    .content__main__post
+      .content__main__post__image
+        = @posts.each do |post|
+          .content_post{:style => "background-image: url(#{post.image});"}
+
+      .content__main__post__like
+        
+        
