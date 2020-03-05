@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(12)
   end
 
   def new
@@ -18,6 +18,10 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+  end
+
+  def edit
+    post = Post.find(params[:id])
   end
 
   def update
