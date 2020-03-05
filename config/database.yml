@@ -53,3 +53,9 @@ production:
   username: fashionista
   password: <%= ENV['FASHIONISTA_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
+
+
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
