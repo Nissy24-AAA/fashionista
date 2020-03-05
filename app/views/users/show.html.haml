@@ -5,7 +5,7 @@
       %p.header__box__info__name
         = current_user.nickname
       = link_to "投稿", "/posts/new", class: "header__box__info__post"
-      -# = link_to "マイページ", edit_post_path, class: "header__box__info__mypage"
+      = link_to "マイページ", user_path, class: "header__box__info__mypage"
       = link_to "ログアウト", edit_user_path(current_user), class: "header__box__info__edit"
 .content
   .content__search
