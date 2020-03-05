@@ -52,3 +52,4 @@ production:
   database: fashionista_production
   username: fashionista
   password: <%= ENV['FASHIONISTA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
