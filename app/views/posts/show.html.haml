@@ -4,11 +4,10 @@
     .header__box__info
       %p.header__box__info__name
         = current_user.nickname
+      = link_to "削除", @post(post.id), method: :delete, class: "header__box__info__post"
       = link_to "ログアウト", edit_user_path(current_user), class: "header__box__info__edit"
-.content__new
-  .content__new__box
-    = form_for @post do |f|
-      .content__new__box__form
-        投稿する
-      = f.file_field :image, class: "content__new__box__image" 
-      = f.submit 'Send', class: 'content__new__box__btn'
+.content__show
+  .content__show__image
+    = image_tag @post.image.url , height: '500px', width: '350px'
+    .content__show__image__name
+      = @post.user.nickname

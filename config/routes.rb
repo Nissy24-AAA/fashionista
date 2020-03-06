@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :posts do
     resources :searches, only: :index
   end
-  resources :posts
-    resources :likes, only: [:create, :destroy]
-   
+  
+  resources :posts, only: [:index, :new, :create, :show, :destroy]
+
 end

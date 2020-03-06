@@ -5,18 +5,14 @@
       %p.header__box__info__name
         = current_user.nickname
       = link_to "投稿", "/posts/new", class: "header__box__info__post"
-      -# = link_to "マイページ", edit_post_path, class: "header__box__info__mypage"
       = link_to "ログアウト", edit_user_path(current_user), class: "header__box__info__edit"
 .content
-  .content__search
-    = form_with(url: posts_searches_path, method: :get, class: "content__search__box") do |form|
-      = form.text_field :name, placeholder: "投稿を検索する", class: "content__search__box__form"
-      = form.submit "検索", class: "content__search__box__btn"
   .content__main
     .content__main__post
       - @posts.each do |post|
         .content__main__post__image
-          = image_tag post.image.url , height: '280px', width: '220px'
-          .content__main__post__image__name
-            = post.user.nickname
+          = link_to post_path(post) do
+            = image_tag post.image.url , height: '280px', width: '220px'
+            %a.content__main__post__image__name
+              = post.user.nickname
   = paginate(@posts)          
